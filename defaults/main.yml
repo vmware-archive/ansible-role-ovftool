@@ -1,0 +1,7 @@
+##### nsx ova deploy vars
+tmp_dir: "/tmp"
+ovf_zip: "VMware-ovftool-4.1.0-2459827-lin.x86_64.zip"
+ovf_zip_md5: "63698e602af6e24640146a6592348c99"
+ovf_zip_url: "http://localhost/downloads/{{ ovf_zip }}"
+ovf_dir: "/usr/local/bin"
+ipprotocol: "IPv4"
