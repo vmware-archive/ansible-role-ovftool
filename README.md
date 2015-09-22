@@ -35,7 +35,7 @@ The directory into which to install the downloaded ovftool binaries.
 
 ```
 ---
-- hosts: supervio
+- hosts: ovftool
   sudo: True
   connection: local
   roles:
