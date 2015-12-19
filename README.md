@@ -8,32 +8,29 @@ This role currently supports only Debian/Ubuntu distros.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+```yaml
+# The temporary directory to use for storing downloaded and other temmporary file.
+tmp_dir: "/tmp"
 
-    tmp_dir: "/tmp"
+# The ovftool binary to download.
+ovf_zip: "VMware-ovftool-4.1.0-2459827-lin.x86_64.zip"
 
-The templorary directory to use for storing downloaded and other temmporary file.
+# The MD5 hash of the binary to download.
+ovf_zip_md5: "63698e602af6e24640146a6592348c99"
 
+# The url to use for downloading the binary.
+ovf_zip_url: "http://build-squid.eng.vmware.com/build/mts/release/bora-2459827/publish/{{ ovf_zip }}"
 
-    ovf_zip: "VMware-ovftool-4.1.0-2459827-lin.x86_64.zip"
+# The directory into which to install the downloaded ovftool binaries.
+ovf_dir: "/usr/local/bin"
 
-The ovftool binary to download.
-
-    ovf_zip_md5: "63698e602af6e24640146a6592348c99"
-
-The MD5 hash of the binary to download.
-
-    ovf_zip_url: "http://localhost/downloads/{{ ovf_zip }}"
-
-The url to use for downloading the binary.
-
-    ovf_dir: "/usr/local/bin"
-
-The directory into which to install the downloaded ovftool binaries.
+# The default IP protocol to use when running ovftool.
+ipprotocol: "IPv4"
+```
 
 ## Example playbook
 
-```
+```yaml
 ---
 - hosts: ovftool
   sudo: True
