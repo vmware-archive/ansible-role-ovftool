@@ -1,0 +1,14 @@
+galaxy_info:
+  author: VMware DevOps & CNA
+  description: Install ovftool for use importing vms to vsphere
+  company: VMware
+  license: Apache 2.0
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: Linux
+    versions:
+    - all
+  galaxy_tags:
+    - download
+    - artifact
