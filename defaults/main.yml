@@ -24,7 +24,9 @@ ovf_zip: "VMware-ovftool-4.1.0-2459827-lin.x86_64.zip"
 ovf_zip_md5: "63698e602af6e24640146a6592348c99"
 
 # The url to use for downloading the binary.
-ovf_zip_url: "http://place-valid.url.here/{{ ovf_zip }}"
+# Note: download_site can be any valid URL that the
+# Ansible "url" module will support.
+ovf_zip_url: "{{ download_site }}/{{ ovf_zip }}"
 
 # The directory into which to install the downloaded ovftool binaries.
 ovf_dir: "/usr/local/bin"
