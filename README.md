@@ -10,9 +10,9 @@ This role currently supports only Debian/Ubuntu distros.
 
 Note: A non-defaulted variable, download_site, must be set by a vars file
 or by other mechanism prior to calling this role. The download_site must
-provide a valid IP (or resolvable DNS name) and path to a directory thereunder
+provide a valid URL base (e.g., http://mysite.com/downloads)
 from which the download files (e.g., ISO files or similar) may be obtained.
-in particuler, see the ovf_zip_url variable below.
+in particular, see the ovf_zip_url variable below.
 
 ```yaml
 # The temporary directory to use for storing downloaded and other temmporary file.
@@ -26,7 +26,7 @@ ovf_zip_md5: "63698e602af6e24640146a6592348c99"
 
 # The url to use for downloading the binary.
 # Note: you must define the download_site in a vars file.
-ovf_zip_url: "http://{{ download_site }}/{{ ovf_zip }}"
+ovf_zip_url: "{{ download_site }}/{{ ovf_zip }}"
 
 # The directory into which to install the downloaded ovftool binaries.
 ovf_dir: "/usr/local/bin"
