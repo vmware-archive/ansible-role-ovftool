@@ -1,0 +1,7 @@
+---
+- hosts: all
+  roles:
+    - role: ovftool
+  vars:
+    - ovf_zip_url: "http://build-squid.eng.vmware.com/build/mts/release/bora-2459827/publish/VMware-ovftool-4.1.0-2459827-lin.x86_64.zip"
+    - ovf_zip_md5: "63698e602af6e24640146a6592348c99"

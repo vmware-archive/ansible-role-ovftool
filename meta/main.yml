@@ -6,9 +6,24 @@ galaxy_info:
   min_ansible_version: 2.0
 
   platforms:
-  - name: Linux
+  - name: Fedora
     versions:
-    - all
+    - 24
+
+  - name: Centos
+    version:
+    - 7
+
+  - name: Photon
+    version:
+    - 1.0
+
+  - name: Ubuntu
+    versions:
+    - trusty
+    - precise
+    - xenial
+
   galaxy_tags:
     - download
     - artifact
