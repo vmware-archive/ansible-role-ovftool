@@ -29,4 +29,4 @@ ovf_zip_md5: "63698e602af6e24640146a6592348c99"
 ovf_zip_url: "{{ download_site }}/{{ ovf_zip }}"
 
 # The directory into which to install the downloaded ovftool binaries.
-ovf_dir: "/usr/local/bin"
+ovf_dir: "/usr"
