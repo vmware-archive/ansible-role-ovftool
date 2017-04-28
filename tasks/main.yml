@@ -15,9 +15,10 @@
 #
 ---
 - name: install packages
-  sudo: yes
-  apt:  name=unzip state=latest
-  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  become: yes
+  package:
+    name: unzip
+    state: present
 
 - name: get ovftool zip file stats
   stat: path="{{ tmp_dir }}/{{ ovf_zip }}"
@@ -35,9 +36,12 @@
   register: ovf_stat
 
 - name: Unzip the OVFtool
-  sudo: yes
+  become: yes
   unarchive: src="{{ tmp_dir }}/{{ ovf_zip }}" dest="{{ ovf_dir }}" copy=no
   when: dload.changed or (not ovf_stat.stat.exists)
+  tags:
+    - skip_ansible_lint
 
 - name: Confirm OVFtool operates
-  shell: "{{ ovf_dir }}/ovftool/ovftool --help"
+  command: "{{ ovf_dir }}/ovftool/ovftool --help"
+  changed_when: False

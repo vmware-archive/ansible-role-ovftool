@@ -1,0 +1,3 @@
+.molecule/
+.cache/
+tests/__pycache__/

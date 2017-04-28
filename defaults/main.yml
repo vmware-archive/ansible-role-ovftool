@@ -30,6 +30,3 @@ ovf_zip_url: "{{ download_site }}/{{ ovf_zip }}"
 
 # The directory into which to install the downloaded ovftool binaries.
 ovf_dir: "/usr/local/bin"
-
-# The default IP protocol to use when running ovftool.
-ipprotocol: "IPv4"

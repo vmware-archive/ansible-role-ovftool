@@ -4,6 +4,9 @@ Ansible playbook to automate downloading and installing ovftool.
 
 ## Requirements
 
+Ovftool can be downloaded from [here](https://www.vmware.com/support/developer/ovf/). To use this role you must 
+download the ovftool zip, host it in a local repository, and set `ovf_zip_url` to the location you store it.
+
 This role currently supports only Debian/Ubuntu distros.
 
 ## Role Variables
@@ -15,7 +18,7 @@ from which the download files (e.g., ISO files or similar) may be obtained.
 in particular, see the ovf_zip_url variable below.
 
 ```yaml
-# The temporary directory to use for storing downloaded and other temmporary file.
+# The temporary directory to use for storing downloaded and other temporary file.
 tmp_dir: "/tmp"
 
 # The ovftool binary to download.
@@ -30,9 +33,6 @@ ovf_zip_url: "{{ download_site }}/{{ ovf_zip }}"
 
 # The directory into which to install the downloaded ovftool binaries.
 ovf_dir: "/usr/local/bin"
-
-# The default IP protocol to use when running ovftool.
-ipprotocol: "IPv4"
 ```
 
 ## Example playbook
@@ -40,15 +40,17 @@ ipprotocol: "IPv4"
 ```yaml
 ---
 - hosts: ovftool
-  sudo: True
-  connection: local
+  roles:
+    - ovftool
+
+- hosts: localhost
   roles:
     - ovftool
 ```
 
 # License and Copyright
  
-Copyright 2015 VMware, Inc.
+Copyright 2015-2017 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
