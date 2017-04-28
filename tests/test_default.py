@@ -5,7 +5,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_hosts_file(File):
-    f = File('/usr/local/bin/ovftool/ovftool')
+    f = File('/usr/bin/ovftool')
 
     assert f.exists
     assert f.user == 'root'
