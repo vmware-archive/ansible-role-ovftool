@@ -47,6 +47,8 @@
   become: yes
   shell: "{{ tmp_dir }}/{{ ovf_zip }}"
   when: dload.changed or (not ovf_stat.stat.exists)
+  tags:
+    - skip_ansible_lint
 
 - name: Test that it operates
   command: "ovftool --help"
