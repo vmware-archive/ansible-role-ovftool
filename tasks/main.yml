@@ -21,32 +21,34 @@
     state: present
 
 - name: Check zip file stats
-  stat: path="{{ tmp_dir }}/{{ ovf_zip }}"
+  stat:
+    path: "{{ tmp_dir }}/{{ ovf_zip }}"
+    get_checksum: yes
+    checksum_algorithm: md5
   register: ovfzip_stat
 
 - name: Download
   get_url:
     url: "{{ ovf_zip_url }}"
     dest: "{{ tmp_dir }}"
-  when: (not ovfzip_stat.stat.exists or (ovfzip_stat.stat.md5 != ovf_zip_md5))
+  when: (not ovfzip_stat.stat.exists or (ovfzip_stat.stat.checksum != "{{ ovf_zip_md5 }}"))
   register: dload
 
 - name: Check binary stats
   stat: path="{{ ovf_dir }}/ovftool/ovftool"
   register: ovf_stat
 
-- name: Unzip the OVFtool
+- name: Make bundle executable
+  file:
+    mode: 0755
+    path: "{{ tmp_dir }}/{{ ovf_zip }}"
+
+- name: Install OVFtool
   become: yes
-  unarchive: src="{{ tmp_dir }}/{{ ovf_zip }}" dest="{{ ovf_dir }}" copy=no
+  shell: "{{ tmp_dir }}/{{ ovf_zip }}"
   when: dload.changed or (not ovf_stat.stat.exists)
   tags:
     - skip_ansible_lint
-
-- name: Link into path
-  file:
-    src: "{{ ovf_dir }}/ovftool/ovftool"
-    dest: "/usr/bin/ovftool"
-    state: link
 
 - name: Test that it operates
   command: "ovftool --help"
