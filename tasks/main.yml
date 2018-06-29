@@ -45,7 +45,7 @@
 
 - name: Install OVFtool
   become: yes
-  shell: "{{ tmp_dir }}/{{ ovf_zip }}"
+  shell: "{{ tmp_dir }}/{{ ovf_zip }} --eulas-agreed --required --console"
   when: dload.changed or (not ovf_stat.stat.exists)
   tags:
     - skip_ansible_lint
