@@ -1,3 +1,6 @@
+# Copyright 2015 VMware, Inc.  All rights reserved.
+# SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-only
+
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(

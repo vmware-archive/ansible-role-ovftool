@@ -1,8 +1,11 @@
+# Copyright 2015 VMware, Inc.  All rights reserved.
+# SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-only
+---
 galaxy_info:
   author: VMware DevOps & CNA
   description: Install ovftool for use importing vms to vsphere
   company: VMware
-  license: Apache 2.0
+  license: license (Apache, GPLv3)
   min_ansible_version: 2.0
   issue_tracker_url: https://github.com/vmware/ansible-role-ovftool/issues
 
